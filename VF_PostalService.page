@@ -1,6 +1,42 @@
-<apex:page >
-  <!-- Begin Default Content REMOVE THIS -->
-  <h1>Congratulations</h1>
-  This is your new Page: VF_PostalService
-  <!-- End Default Content REMOVE THIS -->
+<apex:page controller="PostalServiceController" showHeader="true">
+  <div class="header">
+      <center><img src="{!$Resource.PostalServiceLogo}" width="75%"/></center>
+  </div>
+  
+  <center>
+  <font size = "5">WELCOME <b>{!$User.FirstName}</b></font><br/>
+  <font size = "3">Your are a </font><font color = "blue">{!$Profile.Name}</font></center>
+  <apex:pageBlock >
+    <apex:tabPanel switchType="lightning" selectedTab="inhab" id="tabpanel">
+        <apex:tab label="Inhabitants" name="Inhabitants" id="inhab">
+            <apex:form > 
+            <apex:pageBlock>
+            <font size = "2" color="purple"><b>Please Create your Account:</b></font><br/><br/><br/>
+            </apex:pageBlock>             
+            <apex:pageBlockSection>
+                <apex:inputField value="{!con.FirstName}"/>
+                <apex:inputField value="{!con.LastName}"/>
+                <apex:inputField value="{!con.MailingStreet}"/>
+                <apex:inputField value="{!con.MailingCity}"/>
+                <apex:inputField value="{!con.MailingState}"/>
+                <apex:inputField value="{!con.MailingPostalCode}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection id="account">                
+              <apex:outputField value="{!userAcc.name}" title="Jiffy Mailer Account:"/>
+          </apex:pageBlockSection>
+          <apex:pageBlock>
+            <apex:commandButton action="{!save}" value="Save" title="Save"/>
+            <apex:commandButton action="{!cancel}" value="Cancel" title="Cancel"/>            
+            <apex:commandButton rerender="account, updates" action="{!getUserAcc}" value="Get My User Account" title="Get My User Account"/>
+          </apex:pageBlock>
+          <apex:pageBlock>
+            <apex:outputText id="updates" value="{!updateBox}" title="Updates Box"/>
+          </apex:pageBlock>
+        </apex:form>
+        </apex:tab>
+        <apex:tab label="Packages" name="Packages" id="pkgs">
+          This is the packages!
+        </apex:tab>        
+    </apex:tabPanel>
+  </apex:pageBlock>  
 </apex:page>
