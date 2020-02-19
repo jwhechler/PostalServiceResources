@@ -10,9 +10,9 @@
         <apex:tab label="Inhabitants" name="Inhabitants" id="inhab">
             <apex:form > 
             <apex:pageBlockSection >
-            <font size = "2" color="purple"><b>Please Create your Account:</b></font><br/><br/><br/>
+            <br/><br/><br/>
             </apex:pageBlockSection>
-            <apex:pageBlockSection id="section1"  collapsible="true">              
+            <apex:pageBlockSection id="inputSection">              
                 <apex:inputField value="{!con.FirstName}"/>
                 <apex:inputField value="{!con.LastName}"/>
                 <apex:inputField value="{!con.MailingStreet}"/>
@@ -23,18 +23,20 @@
                 <center>
                 <apex:commandButton rerender="account, updates" action="{!save}" value="Save" title="Save"/>
                 <apex:commandButton action="{!cancel}" value="Cancel" title="Cancel"/><br/><br/>
-                </center>           
-          <apex:pageBlock >
-            <apex:inlineEditSupport >
-            <apex:pageBlockSection id="account"><br/>
-              <apex:outputField value="{!userAcc.name}" title="Jiffy Mailer Account:"/>
-              <apex:outputField value="{!userAcc.Full_Name__c}" title="Full Name:"/>
-              <apex:outputField value="{!userAcc.Contact__c}" title="Related Contact:"/>
-              <apex:outputField value="{!userAcc.Mailing_Address__c}" title="Mailing Address:"/>               
-            </apex:pageBlockSection>             
-            </apex:inlineEditSupport>
-            <center><br/>
+                </center>          
+          <apex:pageBlock ><br/><br/>
+            <apex:pageBlockSection id="account">
+                <apex:outputField value="{!userAcc.name}" title="Jiffy Mailer Account:"/>                
+                
+                <apex:outputField value="{!userAcc.Full_Name__c}" title="Full Name:"/>
+                
+                <apex:outputField value="{!userAcc.Contact__c}" title="Related Contact:"/>
+                
+                <apex:outputField value="{!userAcc.Mailing_Address__c}" title="Mailing Address:"/>            
+            </apex:pageBlockSection> 
+            <center><br/><font color="lightgray">              
             <apex:outputText id="updates" value="{!updateBox}" title="Updates Box"/>
+            </font>
             </center>
           </apex:pageBlock>
         </apex:form>
